@@ -13,6 +13,7 @@ int main(){
         printf("%d", a);
         return 0;
     }
+    
 
     while(temp != 0){
         if(temp == 1){
