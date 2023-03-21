@@ -10,6 +10,7 @@ int main() {
     scanf("%d", &a);
     scanf("%d", &b);
 
+
     int count = 0;
     int prever = 1;
 

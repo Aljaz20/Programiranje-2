@@ -6,6 +6,7 @@ int main(){
     int stevilka;
 
     scanf("%d", &stevilka);
+    
 
     if(jeAmidnum(stevilka) != 0){
         printf("%d", jeAmidnum(stevilka));
