@@ -21,6 +21,7 @@ int main(){
     count = count + preveri;
 
     printNum(count);
+    
 
     return 0;
 }

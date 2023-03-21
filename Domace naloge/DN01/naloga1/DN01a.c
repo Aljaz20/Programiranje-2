@@ -24,6 +24,7 @@ int main(){
     int skupaj = a +n*b;
     printNum(skupaj);
 
+
     return 0;
 }
 
