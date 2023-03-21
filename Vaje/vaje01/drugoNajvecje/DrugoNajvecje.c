@@ -8,6 +8,7 @@ int main() {
     scanf("%d", &n);
     scanf("%d", &prva);
     scanf("%d", &temp);
+    
     if(temp > prva){
         druga = prva;
         prva = temp;

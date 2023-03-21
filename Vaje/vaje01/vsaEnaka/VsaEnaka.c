@@ -15,6 +15,7 @@ int main() {
             break;
         }
     }
+    
 
     printf("%d", izpis);
     return 0;
