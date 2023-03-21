@@ -8,6 +8,7 @@ int main(){
     int moznost = 0;
     int preveri = 0;
     int izpisi0(int n);
+    
 
     do {
         temp = getchar();
