@@ -11,7 +11,7 @@ Seznam rešenih pretklih izpitov:
 
 Seznam rešenih vaj:
 ---------
-- V01 -> V06
+- V01 -> V07
 
 Seznam rešenih domačih nalog:
 -----------
