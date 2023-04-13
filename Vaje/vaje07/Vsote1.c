@@ -1,13 +1,10 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-//Napišite program, ki prebere števili n in k in izpiše, na koliko načinov lahko število n zapišemo kot vsoto števil med 1 in vključno k. Na primer, pri n “ 7 in k “ 5 imamo 13 načinov. Uporabi rekurzijo
 long VS[400][400];
 long ZV[400][400];
 
-long vsote(long n, long k){
-    
-        
+long vsote(long n, long k){   
         if(ZV[n][k]){
             return VS[n][k];
         }

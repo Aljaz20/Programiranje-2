@@ -2,8 +2,6 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-//Napišite program, ki prebere števili n in k in izpiše vsa padajoča zaporedja števil med 1 in vključno k, katerih vsota znaša n. Uporabi rekurzijo
-//Vsako zaporedje izpišite v svoji vrstici, členi zaporedja pa naj bodo med seboj ločeni z zaporedjem presledka, znaka + in presledka.
 
 void izpisi(int t[], int i){
     for(int j=0; j<i; j++){
