@@ -15,5 +15,5 @@ Seznam rešenih vaj:
 
 Seznam rešenih domačih nalog:
 -----------
-- DN01 -> DN06
+- DN01 -> DN07
 
