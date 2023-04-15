@@ -4,10 +4,9 @@ Delo pri predmetu Programiranje 2 (C) UNI, Fakulteta za računalništvo in infor
 
 
 - Vaje in domače naloge s testnimi primeri,
-- pretekli izpiti s testinimi primeri.
-
-Seznam rešenih pretklih izpitov:
------------
+- pretekli izpiti s testinimi primeri,
+- pretekli kolokviji,
+- dodatne naloge s testnimi primeri.
 
 Seznam rešenih vaj:
 ---------
@@ -16,4 +15,15 @@ Seznam rešenih vaj:
 Seznam rešenih domačih nalog:
 -----------
 - DN01 -> DN07
+
+Seznam rešenih pretklih izpitov:
+-----------
+
+
+Seznam rešenih pretklih kolokvijev:
+-----------
+- 2015 - 1. kolokvij
+
+Seznam rešenih dodatnih nalog:
+-----------
 
