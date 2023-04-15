@@ -22,7 +22,8 @@ Seznam rešenih pretklih izpitov:
 
 Seznam rešenih pretklih kolokvijev:
 -----------
-- 2015 - 1. kolokvij
+- 2015 - 1. kolokvij,
+- 2016 - 1. kolokvij.
 
 Seznam rešenih dodatnih nalog:
 -----------
