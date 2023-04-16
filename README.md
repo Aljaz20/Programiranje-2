@@ -22,9 +22,8 @@ Seznam rešenih pretklih izpitov:
 
 Seznam rešenih pretklih kolokvijev:
 -----------
-- 2015 - 1. kolokvij,
-- 2016 - 1. kolokvij,
-- 2017 - 1. kolokvij.
+- 1. kolokvij (2015, 2016, 2017),
+- 2018 - 1. kolokvij A (testni primeri).
 
 Seznam rešenih dodatnih nalog:
 -----------
