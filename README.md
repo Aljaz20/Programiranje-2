@@ -10,7 +10,7 @@ Delo pri predmetu Programiranje 2 (C) UNI, Fakulteta za računalništvo in infor
 
 Seznam rešenih vaj:
 ---------
-- V01 -> V07
+- V01 -> V08
 
 Seznam rešenih domačih nalog:
 -----------
@@ -22,8 +22,8 @@ Seznam rešenih pretklih izpitov:
 
 Seznam rešenih pretklih kolokvijev:
 -----------
-- 1. kolokvij (2015, 2016, 2017),
-- 2018 - 1. kolokvij A in B(testni primeri).
+- Prvi kolokvij (2015, 2016, 2017),
+- 2018 - Prvi kolokvij A in B(testni primeri).
 
 Seznam rešenih dodatnih nalog:
 -----------
