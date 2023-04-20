@@ -28,4 +28,5 @@ Seznam rešenih pretklih kolokvijev:
 
 Seznam rešenih dodatnih nalog:
 -----------
-- 7. Drevo.
+- (7.) Drevo,
+- (8.) Politična nasprotja.
