@@ -24,7 +24,8 @@ Seznam rešenih pretklih kolokvijev:
 -----------
 - Prvi kolokvij (2015, 2016, 2017),
 - 2018 - Prvi kolokvij A in B (testni primeri),
-- 2018 - Nadomestni kolokvij (testni primeri).
+- 2018 - Nadomestni kolokvij (testni primeri),
+- 2023 - Prvi kolokvij B (testni primeri).
 
 Seznam rešenih dodatnih nalog:
 -----------
