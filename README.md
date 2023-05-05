@@ -14,7 +14,7 @@ Seznam rešenih vaj:
 
 Seznam rešenih domačih nalog:
 -----------
-- DN01 -> DN08
+- DN01 -> DN09
 
 Seznam rešenih pretklih izpitov:
 -----------
