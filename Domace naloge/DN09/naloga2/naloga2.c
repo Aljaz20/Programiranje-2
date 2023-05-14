@@ -5,22 +5,26 @@
 char ID[10001][155];
 int zap = 0;
 
-void izpisi(char ***samostalniki, char **glagoli, int s, int g, int m, char **besede, int samos, int glag, int samostal, int dolzina, int maxdolzina, char *id){
+void izpisi(char ***samostalniki, char **glagoli, char *prva, int s, int g, int m, char **besede, int glag, int samostal, int dolzina, int maxdolzina){
     
     
-    if (samos == s || glag == g || samostal == s || dolzina == maxdolzina)
-    {
-        if (dolzina % 3 == 1)
-        {
-            return;
-        }
-        for(int i = 0; i < zap; i++){
-            if(strcmp(ID[i], id) == 0){
+    if (glag == g || samostal >= s || dolzina == maxdolzina)
+    {   
+        if(dolzina %3 == 1){
+            int prev = 0;
+            for(int i = 0; i < dolzina; i++){
+                if(strcmp(besede[i], ",") == 0){
+                    prev = 1;
+                    break;
+                }
+            }
+            if(prev == 0){
                 return;
             }
         }
-        strcpy(ID[zap], id);
-        zap++;
+        if(dolzina == 0){
+            return;
+        }
         int j = 1;
         printf("%c", besede[0][0] + 'A' - 'a');
         while (besede[0][j] != '\0')
@@ -44,25 +48,22 @@ void izpisi(char ***samostalniki, char **glagoli, int s, int g, int m, char **be
         printf(".\n");
         return;
     }
-    while (samos >= samostal){
-        samostal++;
-    }
-        for (samostal; samostal < s; samostal++){
-            printf("%d\n", glag);
-            for(glag; glag < g; glag++){
+    int preveri = 1;
+    int temp = glag;
+    for (samostal; samostal < s; samostal++){
+        for(glag = temp; glag < g; glag++){
             if (dolzina == 0){
-                    for (samos = 0; samos < s - 1; samos++){
-                    strcpy(besede[dolzina], samostalniki[samos][0]);
+                    strcpy(besede[dolzina], prva);
                     strcpy(besede[dolzina + 1], glagoli[glag]);
                     strcpy(besede[dolzina + 2], samostalniki[samostal][1]);
-                    izpisi(samostalniki, glagoli, s, g, m, besede, samos + 1, glag + 1, samostal + 1, dolzina + 3, maxdolzina, id+samos+glag+samostal);
+                    izpisi(samostalniki, glagoli, prva,s, g, m, besede, glag + 1, samostal + 1, dolzina + 3, maxdolzina);
 
                     if (m != 0){
                         strcpy(besede[dolzina + 1], ", ki");
                         strcpy(besede[dolzina + 2], glagoli[glag]);
                         strcpy(besede[dolzina + 3], samostalniki[samostal][1]);
-                        izpisi(samostalniki, glagoli, s, g, m - 1, besede, samos + 1, glag + 1, samostal + 1, dolzina + 4, maxdolzina, id+'k'+glag+samostal);
-                    }
+                        izpisi(samostalniki, glagoli, prva, s, g, m - 1, besede, glag + 1, samostal + 1, dolzina + 4, maxdolzina);
+                    
                 }
             }
             else{
@@ -70,27 +71,30 @@ void izpisi(char ***samostalniki, char **glagoli, int s, int g, int m, char **be
                     strcpy(besede[dolzina], ",");
                     strcpy(besede[dolzina + 1], glagoli[glag]);
                     strcpy(besede[dolzina + 2], samostalniki[samostal][1]);
-                    izpisi(samostalniki, glagoli, s, g, m, besede, samos, glag + 1, samostal + 1, dolzina + 3, maxdolzina , id+','+glag+samostal);
+                    izpisi(samostalniki, glagoli, prva,s, g, m, besede, glag + 1, samostal + 1, dolzina + 3, maxdolzina);
 
                     if (m != 0){
                         strcpy(besede[dolzina], ", ki");
                         strcpy(besede[dolzina + 1], glagoli[glag]);
                         strcpy(besede[dolzina + 2], samostalniki[samostal][1]);
-                        izpisi(samostalniki, glagoli, s, g, m - 1, besede, samos, glag + 1, samostal + 1, dolzina + 3, maxdolzina , id+'k'+glag+samostal);
+                        izpisi(samostalniki, glagoli, prva, s, g, m - 1, besede, glag + 1, samostal + 1, dolzina + 3, maxdolzina);
                     }
                 }
                 else{
-                    izpisi(samostalniki, glagoli, s, g, m, besede, samos, glag, samostal, dolzina, dolzina, id);
+                    if(preveri == 1){
+                        izpisi(samostalniki, glagoli, prva,s, g, m, besede, glag, samostal, dolzina, dolzina);
+                        preveri = 0;
+                    }
+                    
                     if (m != 0){
                         strcpy(besede[dolzina], ", ki");
                         strcpy(besede[dolzina + 1], glagoli[glag]);
                         strcpy(besede[dolzina + 2], samostalniki[samostal][1]);
-                        izpisi(samostalniki, glagoli, s, g, m - 1, besede, samos, glag + 1, samostal + 1, dolzina + 3, maxdolzina , id+'k'+glag+samostal);
+                        izpisi(samostalniki, glagoli,prva, s, g, m - 1, besede, glag + 1, samostal + 1, dolzina + 3, maxdolzina);
                     }
                 }
             }
-            }
-        
+        }
     }
 }
 
@@ -139,7 +143,10 @@ int main()
     {
         besede[i] = (char *)calloc(21, sizeof(char));
     }
-    izpisi(samostalniki, glagoli, s, g, m, besede, 0, 0, 1, 0, maxdolzina, "");
+    for(int i=0; i < s; i++){
+        izpisi(samostalniki, glagoli, samostalniki[i][0],s,g, m, besede, 0, i+1, 0, maxdolzina);
+    }
+
     for (int i = 0; i < s; i++)
     {
         for (int j = 0; j < 2; j++)
