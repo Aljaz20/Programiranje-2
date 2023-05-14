@@ -1,68 +1,158 @@
-
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
+#include <string.h>
 
-#include "naloga2.h"
+char ID[10001][155];
+int zap = 0;
 
-Ulomek okrajšaj(Ulomek u) {
-    int a = u.st;
-    int b = u.im;
-    int c;
-    if(a == 0){
-        u.im = 1;
-        return u;
+void izpisi(char ***samostalniki, char **glagoli, int s, int g, int m, char **besede, int samos, int glag, int samostal, int dolzina, int maxdolzina, char *id){
+    
+    
+    if (samos == s || glag == g || samostal == s || dolzina == maxdolzina)
+    {
+        if (dolzina % 3 == 1)
+        {
+            return;
+        }
+        for(int i = 0; i < zap; i++){
+            if(strcmp(ID[i], id) == 0){
+                return;
+            }
+        }
+        strcpy(ID[zap], id);
+        zap++;
+        int j = 1;
+        printf("%c", besede[0][0] + 'A' - 'a');
+        while (besede[0][j] != '\0')
+        {
+            printf("%c", besede[0][j]);
+            j++;
+        }
+        if (strcmp(besede[1], ", ki") != 0)
+        {
+            printf(" ");
+        }
+
+        for (int i = 1; i < dolzina; i++)
+        {
+            printf("%s", besede[i]);
+            if (i != dolzina - 1 && strcmp(besede[i + 1], ",") != 0 && strcmp(besede[i + 1], ", ki") != 0)
+            {
+                printf(" ");
+            }
+        }
+        printf(".\n");
+        return;
     }
-    while (b != 0) {
-        c = a % b;
-        a = b;
-        b = c;
+    while (samos >= samostal){
+        samostal++;
     }
-    u.st /= a;
-    u.im /= a;
-    if(u.im < 0) {
-        u.st *= -1;
-        u.im *= -1;
+        for (samostal; samostal < s; samostal++){
+            printf("%d\n", glag);
+            for(glag; glag < g; glag++){
+            if (dolzina == 0){
+                    for (samos = 0; samos < s - 1; samos++){
+                    strcpy(besede[dolzina], samostalniki[samos][0]);
+                    strcpy(besede[dolzina + 1], glagoli[glag]);
+                    strcpy(besede[dolzina + 2], samostalniki[samostal][1]);
+                    izpisi(samostalniki, glagoli, s, g, m, besede, samos + 1, glag + 1, samostal + 1, dolzina + 3, maxdolzina, id+samos+glag+samostal);
+
+                    if (m != 0){
+                        strcpy(besede[dolzina + 1], ", ki");
+                        strcpy(besede[dolzina + 2], glagoli[glag]);
+                        strcpy(besede[dolzina + 3], samostalniki[samostal][1]);
+                        izpisi(samostalniki, glagoli, s, g, m - 1, besede, samos + 1, glag + 1, samostal + 1, dolzina + 4, maxdolzina, id+'k'+glag+samostal);
+                    }
+                }
+            }
+            else{
+                if (dolzina % 3 == 1 && strcmp(besede[dolzina - 3], ",") != 0){
+                    strcpy(besede[dolzina], ",");
+                    strcpy(besede[dolzina + 1], glagoli[glag]);
+                    strcpy(besede[dolzina + 2], samostalniki[samostal][1]);
+                    izpisi(samostalniki, glagoli, s, g, m, besede, samos, glag + 1, samostal + 1, dolzina + 3, maxdolzina , id+','+glag+samostal);
+
+                    if (m != 0){
+                        strcpy(besede[dolzina], ", ki");
+                        strcpy(besede[dolzina + 1], glagoli[glag]);
+                        strcpy(besede[dolzina + 2], samostalniki[samostal][1]);
+                        izpisi(samostalniki, glagoli, s, g, m - 1, besede, samos, glag + 1, samostal + 1, dolzina + 3, maxdolzina , id+'k'+glag+samostal);
+                    }
+                }
+                else{
+                    izpisi(samostalniki, glagoli, s, g, m, besede, samos, glag, samostal, dolzina, dolzina, id);
+                    if (m != 0){
+                        strcpy(besede[dolzina], ", ki");
+                        strcpy(besede[dolzina + 1], glagoli[glag]);
+                        strcpy(besede[dolzina + 2], samostalniki[samostal][1]);
+                        izpisi(samostalniki, glagoli, s, g, m - 1, besede, samos, glag + 1, samostal + 1, dolzina + 3, maxdolzina , id+'k'+glag+samostal);
+                    }
+                }
+            }
+            }
+        
     }
-    return u;
 }
 
-Ulomek odštej(Ulomek u1, Ulomek u2) {
-    Ulomek u = okrajšaj((Ulomek) { u1.st * u2.im - u2.st * u1.im, u1.im * u2.im });
-    return u;
-}
-
-Ulomek zmnoži(Ulomek u1, Ulomek u2) {
-    Ulomek u = okrajšaj((Ulomek) { u1.st * u2.st, u1.im * u2.im });
-    return u;
-}
-
-Ulomek obrni(Ulomek u) {
-    Ulomek u1 = okrajšaj((Ulomek) { u.im, u.st });
-    return u1;
-}
-
-Ulomek seštej(Ulomek u1, Ulomek u2) {
-    Ulomek u = okrajšaj((Ulomek) { u1.st * u2.im + u2.st * u1.im, u1.im * u2.im });
-    return u;
-}
-
-Tocka projekcija(Tocka t, Premica p) {
-    if (p.navpicna) {
-        return (Tocka) { okrajšaj(p.n), okrajšaj(t.y) };
-    }else{
-        if(p.k.st == 0) return (Tocka) { okrajšaj(t.x), okrajšaj(p.n) };
-        Ulomek koeficient = okrajšaj((Ulomek) { (p.k.im)*-1, p.k.st });
-        Ulomek n1 = okrajšaj(p.n);
-        Ulomek x = okrajšaj(t.x);
-        Ulomek y = okrajšaj(t.y);
-        Ulomek n2 = odštej(y, zmnoži(koeficient, x));
-        Ulomek kordinatax = zmnoži(odštej(n2, n1), obrni(odštej(p.k, koeficient)));
-        Ulomek kordinatay = seštej(n2, zmnoži(koeficient, kordinatax));
-        return (Tocka) { kordinatax, kordinatay };
+int main()
+{
+    int s, g, m;
+    scanf("%d\n", &s);
+    char ***samostalniki = (char ***)malloc(s * sizeof(char **));
+    for (int i = 0; i < s; i++)
+    {
+        samostalniki[i] = (char **)malloc(2 * sizeof(char *));
     }
-}
-
-int main() {
+    for (int i = 0; i < s; i++)
+    {
+        for (int j = 0; j < 2; j++)
+        {
+            samostalniki[i][j] = (char *)malloc(21 * sizeof(char));
+            char c;
+            scanf("%c", &c);
+            for (int k = 0; c != ' ' && c != '\n'; k++)
+            {
+                samostalniki[i][j][k] = c;
+                scanf("%c", &c);
+                samostalniki[i][j][k + 1] = '\0';
+            }
+        }
+    }
+    scanf("%d\n", &g);
+    char **glagoli = (char **)malloc(g * sizeof(char *));
+    for (int i = 0; i < g; i++)
+    {
+        glagoli[i] = (char *)malloc(21 * sizeof(char));
+        char c;
+        scanf("%c", &c);
+        for (int j = 0; c != ' ' && c != '\n'; j++)
+        {
+            glagoli[i][j] = c;
+            scanf("%c", &c);
+            glagoli[i][j + 1] = '\0';
+        }
+    }
+    scanf("%d\n", &m);
+    int maxdolzina = 3 * (m + 1) + 1;
+    char **besede = (char **)calloc(maxdolzina, sizeof(char *));
+    for (int i = 0; i < maxdolzina; i++)
+    {
+        besede[i] = (char *)calloc(21, sizeof(char));
+    }
+    izpisi(samostalniki, glagoli, s, g, m, besede, 0, 0, 1, 0, maxdolzina, "");
+    for (int i = 0; i < s; i++)
+    {
+        for (int j = 0; j < 2; j++)
+        {
+            free(samostalniki[i][j]);
+        }
+        free(samostalniki[i]);
+    }
+    free(samostalniki);
+    for (int i = 0; i < g; i++)
+    {
+        free(glagoli[i]);
+    }
+    free(glagoli);
     return 0;
 }

@@ -1,20 +1,19 @@
 
-# Before running make:
-#     export name=<name_of_source_C_file>
+# Pred poganjanjem programa make:
+#     export name=<ime_datoteke_C_brez_koncnice>
 #
-# Compile:
+# Prevajanje:
 #     make
 #
-# Test:
-#     make test [optional parameters]
+# Testiranje:
+#     make test [neobvezni parametri]
 #
-#     Optional parameters:
-#         T: timeout value in seconds (default = 1)
-#         M: print execution time for each test case (1: yes; 0: no; default = 0)
-#         P: range of test cases to be considered (e.g., 3-5 or 7 or 2- or -6
-#            or -; default = -)
+#     Neobvezni parametri:
+#         T: "casovna omejitev v sekundah (privzeto = 1)
+#         M: za vsak testni primer izpi"si "cas izvajanja (1: da; 0: ne; privzeto = 0)
+#         P: obseg testnih primerov, ki naj se obravnava (npr. 3-5 ali 7 ali 2- ali -6 ali -; privzeto = -)
 #
-#     Examples:
+#     Primeri:
 #         make test
 #         make test P=4-7
 #         make test T=3
@@ -42,11 +41,11 @@ ${name} : ${name}.c
 
 test : ${name}
 	@echo "=== TESTING: ==="; \
-	singleTestFile=$$(ls -1 test*.out | head -1); \
+	singleTestFile=$$(ls -1 test*.in | head -1); \
 	\
-	testNumberLength=$$(( $${#singleTestFile} - 8 )); \
+	testNumberLength=$$(( $${#singleTestFile} - 7 )); \
 	cutParameter=$$((5 + testNumberLength - 1)); \
-	nTests=$$(ls -1 test*.out | cut -c5-$$cutParameter | sort | tail -1); \
+	nTests=$$(ls -1 test*.in | cut -c5-$$cutParameter | sort | tail -1); \
 	firstTest=$$(echo $$P | cut -d'-' -f1); \
 	lastTest=$$(echo $$P | cut -d'-' -f2); \
 	if [[ -z $$firstTest ]]; then \
@@ -64,17 +63,10 @@ test : ${name}
 	timeoutValue=${T}; \
 	hardTimeoutValue=$$((timeoutValue + 2)); \
 	\
-	${CC} ${CFLAGS} -c ${name}.c; \
-	\
 	for i0 in $$(seq $$firstTest $$lastTest); do \
 		i=$$(printf %0$${testNumberLength}d $$i0); \
-		${CC} ${CFLAGS} -c test$$i.c; \
-		objcopy --redefine-sym main=__uf8UGBF6DXffwIyX9KN46XL3F5jgqMvs__ ${name}.o; \
-		objcopy --redefine-sym __main__=main test$$i.o; \
-		${CC} -o test$$i test$$i.o ${name}.o ${LIBS}; \
-		rm -f test$$i.o; \
 		startTime=$$(date +%s.%N); \
-		timeout -k $${hardTimeoutValue} $${timeoutValue} ./test$$i > test$$i.res 2> /dev/null; \
+		timeout -k $${hardTimeoutValue} $${timeoutValue} ./${name} < test$$i.in > test$$i.res 2> /dev/null; \
 		result=$$?; \
 		endTime=$$(date +%s.%N); \
 		if [[ $$result == ${TIMEOUT_SIGNAL} ]]; then \
@@ -84,15 +76,17 @@ test : ${name}
 				echo -e "test$$i -- ${TIMEOUT_STRING}"; \
 			fi; \
 		else \
-			timeDifference=$$(echo "scale=2; $${endTime} - $${startTime}" | bc | awk '{printf "%.2f\n", $$0}'); \
+			timeDifference=$$(echo "scale=2; ($${endTime} - $${startTime}) / 1.00" | bc); \
 			measuredTimeString=""; \
 			if [[ ${M} = 1 ]]; then \
 				measuredTimeString=" [$$timeDifference s]"; \
 			fi; \
-			timeout -k ${DIFF_TIMEOUT} ${DIFF_TIMEOUT} diff --ignore-trailing-space test$$i.res test$$i.out > test$$i.diff; \
+			sort < test$$i.out > test$$i.outs; \
+			sort < test$$i.res > test$$i.ress; \
+			timeout -k ${DIFF_TIMEOUT} ${DIFF_TIMEOUT} diff --ignore-trailing-space test$$i.ress test$$i.outs > test$$i.diff; \
 			result=$$?; \
 			if [[ $$result == ${TIMEOUT_SIGNAL} ]]; then \
-				cmp test$$i.res test$$i.out > test$$i.diff; \
+				cmp test$$i.ress test$$i.outs > test$$i.diff; \
 				result=$$?; \
 			fi; \
 			if [[ $$result == 0 ]]; then \
@@ -104,8 +98,7 @@ test : ${name}
 		fi; \
 		nConsideredTests=$$((nConsideredTests + 1)); \
 	done; \
-	rm -f ${name}.o; \
 	echo "Result: $$nPassedTests / $$nConsideredTests"
 
 clean :
-	rm -fr ${name} test?? test*.res test*.diff *.o
+	rm -fr ${name} test*.res* test*.outs test*.diff
