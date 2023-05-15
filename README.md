@@ -10,7 +10,7 @@ Delo pri predmetu Programiranje 2 (C) UNI, Fakulteta za računalništvo in infor
 
 Seznam rešenih vaj:
 ---------
-- V01 -> V10
+- V01 -> V11
 
 Seznam rešenih domačih nalog:
 -----------
