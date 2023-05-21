@@ -16,7 +16,6 @@ int izpisiC(C* c, char* cilj) {
     int count = 0;
     count += sprintf(cilj, "{%s, ", c->r ? "true" : "false");
     
-    
     count += izpisiA(c->a, cilj + count);
     count += sprintf(cilj + count, ", ");
     count += izpisiB(c->b, cilj + count);
