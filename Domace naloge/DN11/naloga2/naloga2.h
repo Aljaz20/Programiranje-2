@@ -1,4 +1,7 @@
 
+#ifndef _NALOGA2_H
+#define _NALOGA2_H
+
 typedef struct A A;
 typedef struct B B;
 typedef struct C C;
@@ -20,3 +23,5 @@ struct C {
 };
 
 int izpisiA(A* a, char* cilj);
+
+#endif

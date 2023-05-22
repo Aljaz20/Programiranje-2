@@ -1,4 +1,7 @@
 
+#ifndef _NALOGA1_H
+#define _NALOGA1_H
+
 typedef struct Vozlisce Vozlisce;
 
 struct Vozlisce {
@@ -7,3 +10,5 @@ struct Vozlisce {
 };
 
 Vozlisce* zdesetkaj(Vozlisce* zacetek, int k);
+
+#endif

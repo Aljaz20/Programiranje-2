@@ -23,8 +23,9 @@ Vozlisce* zdesetkaj(Vozlisce* zacetek, int k) {
     return tmp;
       
 }
-
+#ifndef test
 int main() {
     // koda za ro"cno testiranje (po "zelji)
     return 0;
 }
+#endif

@@ -51,8 +51,9 @@ int izpisiA(A* a, char* cilj) {
     
     return count;
 }
-
+#ifndef test
 int main() {
     // koda za ro"cno testiranje (po "zelji)
     return 0;
 }
+#endif
