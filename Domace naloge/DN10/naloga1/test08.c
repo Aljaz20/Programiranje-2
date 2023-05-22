@@ -18,7 +18,7 @@ void izvedi(Student** studentje, int stStudentov, char* predmet) {
     printf("]\n");
 }
 
-int __main__() {
+int main() {
     Student* studentje[] = {
         (Student[]) {
             852,
@@ -399,6 +399,5 @@ int __main__() {
     izvedi(studentje, stStudentov, "OIS");
     izvedi(studentje, stStudentov, "P2");
 
-    exit(0);
     return 0;
 }

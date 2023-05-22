@@ -1,4 +1,7 @@
 
+#ifndef _NALOGA1_H
+#define _NALOGA1_H
+
 typedef struct _PO {   // par predmet-ocena
     char predmet[4];   // oznaka predmeta
     int ocena;         // ocena pri tem predmetu
@@ -16,3 +19,5 @@ typedef struct _VO {   // par vpisna-ocena
 } VO;
 
 VO** opravili(Student** studentje, int stStudentov, char* predmet, int* stVO);
+
+#endif

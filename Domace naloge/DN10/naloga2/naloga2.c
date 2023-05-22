@@ -62,7 +62,8 @@ Tocka projekcija(Tocka t, Premica p) {
         return (Tocka) { kordinatax, kordinatay };
     }
 }
-
+#ifndef test
 int main() {
     return 0;
 }
+#endif

@@ -42,8 +42,9 @@ VO** opravili(Student** studentje, int stStudentov, char* predmet, int* stVO) {
 
     return opravili;
 }
-
+#ifndef test
 int main() {
     // koda za ro"cno testiranje (po "zelji)
     return 0;
 }
+#endif
