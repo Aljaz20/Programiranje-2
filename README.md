@@ -30,6 +30,7 @@ Seznam rešenih pretklih kolokvijev:
 	- 2023 - A in B (testni primeri).
 
 - Drugi kolokvij:
+	- 2015,
 	- 2018 - A in B (testni primeri).
 
 - Nadomestni kolokvij:

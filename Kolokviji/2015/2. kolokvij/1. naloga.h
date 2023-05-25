@@ -1,5 +1,7 @@
 
-typedef struct _Niz{
-    char* str;
-    struct _Niz* naslednji;
-} Niz;
+typedef struct _Node{
+    int vrednost;
+    int (*tabela)[3];
+    int* (*tabela2)[5];
+    struct _Node* jaz;
+} Node;
