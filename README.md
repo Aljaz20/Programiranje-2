@@ -32,6 +32,7 @@ Seznam rešenih pretklih kolokvijev:
 - Drugi kolokvij:
 	- 2015,
 	- 2016,
+	- 2017,
 	- 2018 - A in B (testni primeri).
 
 - Nadomestni kolokvij:
