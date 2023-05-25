@@ -33,6 +33,7 @@ Seznam rešenih pretklih kolokvijev:
 	- 2018 - A in B (testni primeri).
 
 - Nadomestni kolokvij:
+	- 2017,
 	- 2018 (testni primeri).
 
 Seznam rešenih dodatnih nalog:
