@@ -18,7 +18,7 @@ Seznam rešenih domačih nalog:
 
 Seznam rešenih pretklih izpitov:
 -----------
-
+- 2022 - 1. izpitni rok (testni primeri).
 
 Seznam rešenih pretklih kolokvijev:
 -----------
