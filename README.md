@@ -3,22 +3,15 @@
 Delo pri predmetu Programiranje 2 (C) UNI, Fakulteta za računalništvo in informatiko, Univerza v Ljubljani, 2022/23:
 
 
-- Vaje in domače naloge s testnimi primeri,
-- pretekli izpiti s testinimi primeri,
+- Pretekli izpiti s testinimi primeri,
 - pretekli kolokviji,
+- vaje in domače naloge s testnimi primeri,
 - dodatne naloge s testnimi primeri.
 
-Seznam rešenih vaj:
----------
-- V01 -> V13
-
-Seznam rešenih domačih nalog:
------------
-- DN01 -> DN11
 
 Seznam rešenih pretklih izpitov:
 -----------
-- 2022 - 1. izpitni rok (testni primeri).
+- 2022 - 1. izpitni rok.
 
 Seznam rešenih pretklih kolokvijev:
 -----------
@@ -38,6 +31,14 @@ Seznam rešenih pretklih kolokvijev:
 - Nadomestni kolokvij:
 	- 2017,
 	- 2018 (testni primeri).
+
+Seznam rešenih vaj:
+---------
+- V01 -> V13
+
+Seznam rešenih domačih nalog:
+-----------
+- DN01 -> DN11
 
 Seznam rešenih dodatnih nalog:
 -----------
