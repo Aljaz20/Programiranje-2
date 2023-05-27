@@ -11,7 +11,8 @@ Delo pri predmetu Programiranje 2 (C) UNI, Fakulteta za računalništvo in infor
 
 Seznam rešenih pretklih izpitov:
 -----------
-- 2022 - 1. izpitni rok.
+- 2022 - 1. izpitni rok,
+- 2022 - 2. izpitni rok.
 
 Seznam rešenih pretklih kolokvijev:
 -----------
