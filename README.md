@@ -38,7 +38,7 @@ Seznam rešenih vaj:
 
 Seznam rešenih domačih nalog:
 -----------
-- DN01 -> DN11
+- DN01 -> DN12
 
 Seznam rešenih dodatnih nalog:
 -----------
