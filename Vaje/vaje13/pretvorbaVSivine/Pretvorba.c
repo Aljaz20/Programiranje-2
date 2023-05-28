@@ -26,7 +26,7 @@ int main(int argc, char *argv[]){
     for(int i = 0; i < visina; i++){
         for(int j = 0; j < sirina; j++){
             fscanf(fp, "%c%c%c", &R, &G, &B);
-            unsigned sivina = (30*R + 59*G + 11*B)/100;
+            unsigned char sivina = (30*R + 59*G + 11*B)/100;
             fwrite(&sivina, sizeof(unsigned char), 1, rez);
         }
     }
