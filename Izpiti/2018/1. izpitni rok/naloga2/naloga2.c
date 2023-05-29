@@ -12,33 +12,29 @@
 
 uchar* preberi(char* imeDatoteke, int* sirina, int* visina, int* stBajtov)
 {   
+
     FILE *vhodna = fopen(imeDatoteke, "rb");
 
-    if(vhodna == NULL){
-        printf("Napaka pri odpiranju datoteke\n");
-        return NULL;
-    }
-
-   
-    /*char *P6 = calloc(2, sizeof(char));
+    char *P6 = calloc(2, sizeof(char));
     fread(P6, sizeof(char), 2, vhodna);
     int max = 255;
-    fscanf(vhodna, "%d%d%d\n", sirina, visina, &max);*/
-    //*stBajtov = *sirina * *visina * 3;
-    //unsigned char *tabela = calloc(*stBajtov*3, sizeof(unsigned char));
-    printf("%d %d\n", *sirina, *visina);
-    /*for(int i = 0; i < *stBajtov; i++){
+    fscanf(vhodna, "%d%d%d\n", sirina, visina, &max);
+    *stBajtov = *sirina * *visina * 3;
+    unsigned char *tabela = calloc(*stBajtov*3, sizeof(unsigned char));
+    for(int i = 0; i < *stBajtov; i++){
         fread(&tabela[i], sizeof(unsigned char), 1, vhodna);
-    }*/
-    //fclose(vhodna);
-    return NULL;
+    }
+    fclose(vhodna);
+    return tabela;
 }
 
 int sivina(uchar* pike, int sirina, int visina, int vrstica, int stolpec)
 {
-    //dopolni
+    int sivina = 0;
+    int indeks = (vrstica * sirina + stolpec) * 3;
+    sivina = (pike[indeks] + pike[indeks+1] + pike[indeks+2]) / 3;
+    return sivina;
 
-    return 0;
 }
 #ifndef test
 int main() {
