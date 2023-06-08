@@ -21,74 +21,81 @@
 // po potrebi dopolnite ...
 
 void izlociSkupne(Vozlisce* a, Vozlisce* b, Vozlisce** noviA, Vozlisce** noviB) {
-    int *tabela = calloc(1000, sizeof(int));
-    int i = 0;
+    int* tabela = calloc(1000, sizeof(int));
+    int count = 0;
     Vozlisce* tempa = a;
     Vozlisce* tempb = b;
-    while(tempb != NULL){
-        tempa = a;
-        while(tempa != NULL){
+
+    while(tempa != NULL){
+        tempb = b;
+        while(tempb != NULL){
             if(tempa->podatek == tempb->podatek){
-                tabela[i] = tempa->podatek;
-                i++;
+                tabela[count] = tempa->podatek;
+                count++;
+                break;
             }
-            tempa=tempa->naslednje;
+            tempb = tempb->naslednje;
         }
-        tempb = tempb->naslednje;
+        tempa=tempa->naslednje;
     }
-   
-    tempa = a;
-    tempb = b;
     *noviA = NULL;
     *noviB = NULL;
-     while (tempa != NULL) {
-        int c = 0;
-        int found = 0;
-        for (c = 0; c < i; c++) {
-            if (tempa->podatek == tabela[c]) {
-                found = 1;
+    tempa = a;
+    tempb = b;
+
+    int prvic = 1;
+    int preveri = 0;
+
+    while(tempa != NULL){
+        preveri = 0;
+        for(int i = 0; i < count; i++){
+            if(tempa->podatek == tabela[i]){
+                tempa = tempa->naslednje;
+                preveri = 1;
                 break;
             }
         }
-        if (found == 0) {
-            if (*noviA == NULL) {
-                *noviA = tempa;
-                a = tempa;
-            } else {
-                a->naslednje = tempa;
-                a = a->naslednje;
-            }
-            tempa = tempa->naslednje;
-            a->naslednje = NULL;
-        } else {
-            tempa = tempa->naslednje;
+        if(preveri == 1){
+            continue;
         }
+        if(prvic == 1){
+            a = tempa;
+            *noviA = tempa;
+            prvic = 0;
+        }else{
+            a->naslednje = tempa;
+            a=a->naslednje;
+        }
+        tempa = tempa->naslednje;
+        a->naslednje = NULL;
     }
-    while (tempb != NULL) {
-        int c = 0;
-        int found = 0;
-        for (c = 0; c < i; c++) {
-            if (tempb->podatek == tabela[c]) {
-                found = 1;
+    prvic = 1;
+
+    while(tempb != NULL){
+        preveri = 0;
+        for(int i = 0; i < count; i++){
+            if(tempb->podatek == tabela[i]){
+                tempb = tempb->naslednje;
+                preveri = 1;
                 break;
             }
         }
-        if (found == 0) {
-            if (*noviB == NULL) {
-                *noviB = tempb;
-                b = tempb;
-            } else {
-                b->naslednje = tempb;
-                b = b->naslednje;
-            }
-            tempb = tempb->naslednje;
-            b->naslednje = NULL;
-        } else {
-            tempb = tempb->naslednje;
+        if(preveri == 1){
+            continue;
         }
+        if(prvic == 1){
+            b = tempb;
+            
+            *noviB = tempb;
+            prvic = 0;
+        }else{
+            b->naslednje = tempb;
+            b=b->naslednje;
+        }
+        tempb = tempb->naslednje;
+        b->naslednje = NULL;
     }
     free(tabela);
-        
 
 }
 

@@ -58,9 +58,7 @@ int main() {
         scanf("%d %d", &tabela[i][0], &tabela[i][1]);
     }
     int* temp = calloc(n, sizeof(int));
-    for(int i = 0; i < n; i++){
-        temp[i] = 0;
-    }
+    temp[0] = 0;
     
     poti(n,k, tabela, temp, 0,1);
 

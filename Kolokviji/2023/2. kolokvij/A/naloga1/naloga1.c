@@ -10,49 +10,50 @@ int main(int argc, char** argv) {
     FILE *vhod = fopen(argv[1], "r");
     FILE *izhod = fopen(argv[2], "w");
 
-    if(vhod == NULL){
-        printf("vhod");
-        return 0;
-    }
-    if(izhod == NULL){
-        printf("izhod");
-        return 0;
+    int tabela[6] = {67, 99, 83, 115, 90, 122};
+
+    unsigned char a = 'a';
+    unsigned char b = 'b';
+    if(fread(&b, sizeof(unsigned char), 1, vhod) != 1){
+        fclose(vhod);
+        fclose(izhod);
+        exit(0);
     }
 
-    char temp = 'a';
-    char temp2 = 'b';
-    while(fread(&temp, sizeof(char), 1, vhod) == 1){
-        
-        if(temp == '"'){
-            if(temp2 == '"'){
-                fwrite(&temp2, sizeof(char), 1, izhod);
-            }
-            temp2 = temp;
-            continue;
-        }else{
-            if(temp2 == '"'){
-                if(temp == 'C' || temp == 'c' ||temp == 'S' ||temp == 's' ||temp == 'Z' ||temp == 'z'){
-                    
-                    fwrite(&temp, sizeof(char), 1, izhod);
-                    temp2 = temp;
-                    continue;
-                }else{
-                    fwrite(&temp2, sizeof(char), 1, izhod);
-                    fwrite(&temp, sizeof(char), 1, izhod);
-                    temp2 = temp;
-                    continue;
 
-                }
-            }else{
-                fwrite(&temp, sizeof(char), 1, izhod);
-                temp2 = temp;
-                    continue;
-            }
+    while(true){
+        if(fread(&a, sizeof(unsigned char), 1, vhod) != 1){
+            fwrite(&b, sizeof(unsigned char), 1, izhod);
+            fclose(vhod);
+            fclose(izhod);
+            exit(0);
         }
         
+        if(b == '"'){
+            int preveri = 0;
+            for(int i = 0; i < 6; i++){
+                if(a == tabela[i]){
+                    preveri = 1;
+                    break;
+                }
+            }
+            if(preveri == 1){
+                fwrite(&a, sizeof(unsigned char), 1, izhod);
+                if(fread(&a, sizeof(unsigned char), 1, vhod) != 1){
+                    fclose(vhod);
+                    fclose(izhod);
+                    exit(0);
+                }
+            }else{
+                fwrite(&b, sizeof(unsigned char), 1, izhod);
+                //fwrite(&a, sizeof(unsigned char), 1, izhod);
+            }
+            b = a;
+        }else{
+            fwrite(&b, sizeof(unsigned char), 1, izhod);
+            b=a;
+        }
     }
-    fclose(vhod);
-    fclose(izhod);
 
     return 0;
 }
