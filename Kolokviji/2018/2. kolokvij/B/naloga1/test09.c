@@ -44,9 +44,9 @@ void pocistiSeznam(Vozlisce* v) {
 }
 
 int __main__() {
-    Vozlisce* v = ustvariSeznam(500);
-    Vozlisce* p = naprej(v, 3);
-    Vozlisce* q = naprej(v, 450);
+    Vozlisce* v = ustvariSeznam(13);
+    Vozlisce* p = naprej(v, 7);
+    Vozlisce* q = naprej(v, 11);
     printf("%d\n", razdalja(p, q));
 
     pocistiSeznam(v);
