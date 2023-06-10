@@ -29,7 +29,7 @@ void pocisti(Vozlisce* zacetek) {
 }
 
 Vozlisce* zgradiOsnovo() {
-    return v(30, v(40, v(20, v(50, NULL))));
+    return v(389, v(978, NULL));
 }
 
 Vozlisce* zgradiIndekse() {

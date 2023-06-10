@@ -18,7 +18,7 @@ Vozlisce *odstrani(Vozlisce *osnova, Vozlisce *indeksi)
    int preveri = 0;
    while(osnova != NULL){
     if(indeksi == NULL){
-        if(i==0){
+        if(i==0 || preveri == 0){
             return osnova;
         }
         temp->naslednje = osnova;

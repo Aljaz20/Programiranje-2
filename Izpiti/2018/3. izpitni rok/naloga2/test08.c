@@ -29,11 +29,11 @@ void pocisti(Vozlisce* zacetek) {
 }
 
 Vozlisce* zgradiOsnovo() {
-    return v(70, v(30, v(60, v(40, v(50, NULL)))));
+    return v(31, v(894, v(561, v(704, v(936, v(883, v(846, v(601, v(573, v(81, v(677, v(172, v(842, v(333, v(439, v(637, v(373, v(28, v(110, v(729, v(126, v(241, v(722, v(419, v(320, v(696, v(521, v(582, v(950, v(77, v(64, v(171, v(603, v(221, v(6, NULL)))))))))))))))))))))))))))))))))));
 }
 
 Vozlisce* zgradiIndekse() {
-    return v(0, v(1, v(2, v(3, v(4, NULL)))));
+    return v(10, NULL);
 }
 
 int __main__() {
