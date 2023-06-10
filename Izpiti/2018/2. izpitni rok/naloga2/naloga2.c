@@ -21,6 +21,12 @@ Vozlisce *vstaviUrejeno(Vozlisce *zacetek, int element)
     if(zacetek == NULL){
         return temp;
     }
+    if(zacetek->n ==NULL){
+    	if(zacetek->podatek <= element){
+    		zacetek->n=temp;
+    		return zacetek;
+    	}
+    }
     if(zacetek->podatek > element){
         temp->n = zacetek;
         temp->nn=zacetek->n;

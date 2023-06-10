@@ -36,9 +36,21 @@ void izpisi(Vozlisce* zacetek) {
 
 Vozlisce* zgradiSeznam() {
     Vozlisce* v001 = malloc(sizeof(Vozlisce));
-    v001->podatek = -50;
-    v001->n = NULL;
-    v001->nn = NULL;
+    Vozlisce* v002 = malloc(sizeof(Vozlisce));
+    Vozlisce* v003 = malloc(sizeof(Vozlisce));
+    Vozlisce* v004 = malloc(sizeof(Vozlisce));
+    v001->podatek = 104;
+    v002->podatek = 266;
+    v003->podatek = 848;
+    v004->podatek = 849;
+    v001->n = v002;
+    v002->n = v003;
+    v003->n = v004;
+    v004->n = NULL;
+    v001->nn = v003;
+    v002->nn = v004;
+    v003->nn = NULL;
+    v004->nn = NULL;
     return v001;
 }
 
@@ -55,8 +67,8 @@ int __main__() {
     printf("PREJ:   ");
     izpisi(zacetek);
 
-    printf("VSTAVI: -60\n");
-    zacetek = vstaviUrejeno(zacetek, -60);
+    printf("VSTAVI: 807\n");
+    zacetek = vstaviUrejeno(zacetek, 807);
 
     printf("POTEM:  ");
     izpisi(zacetek);

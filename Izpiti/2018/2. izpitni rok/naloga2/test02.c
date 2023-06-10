@@ -39,10 +39,10 @@ Vozlisce* zgradiSeznam() {
     Vozlisce* v002 = malloc(sizeof(Vozlisce));
     Vozlisce* v003 = malloc(sizeof(Vozlisce));
     Vozlisce* v004 = malloc(sizeof(Vozlisce));
-    v001->podatek = 1;
-    v002->podatek = 4;
-    v003->podatek = 10;
-    v004->podatek = 12;
+    v001->podatek = 121;
+    v002->podatek = 287;
+    v003->podatek = 595;
+    v004->podatek = 771;
     v001->n = v002;
     v002->n = v003;
     v003->n = v004;
@@ -67,8 +67,8 @@ int __main__() {
     printf("PREJ:   ");
     izpisi(zacetek);
 
-    printf("VSTAVI: 8\n");
-    zacetek = vstaviUrejeno(zacetek, 8);
+    printf("VSTAVI: 484\n");
+    zacetek = vstaviUrejeno(zacetek, 484);
 
     printf("POTEM:  ");
     izpisi(zacetek);
