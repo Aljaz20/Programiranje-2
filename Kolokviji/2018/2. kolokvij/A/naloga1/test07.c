@@ -37,7 +37,7 @@ void pocistiSeznam(Vozlisce* v) {
 }
 
 int __main__() {
-    Vozlisce* v = ustvariSeznam(456);
+    Vozlisce* v = ustvariSeznam(7);
     printf("%d\n", steviloElementov(v));
     pocistiSeznam(v);
 
