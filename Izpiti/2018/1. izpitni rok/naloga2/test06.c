@@ -3,15 +3,8 @@
 
 int __main__() {
     int sirina, visina, stBajtov;
-    uchar* pike = preberi("c.ppm", &sirina, &visina, &stBajtov);
-
-    printf("%d\n", stBajtov);
-    for (int i = 0;  i < stBajtov;  i++) {
-        if (i > 0) {
-            printf(" ");
-        }
-        printf("%d", pike[i]);
-    }
+    preberi("slika06.ppm", &sirina, &visina, &stBajtov);
+    printf("%d %d\n", sirina, visina);
 
     exit(0);
     return 0;
