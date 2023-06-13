@@ -9,14 +9,14 @@ Delo pri predmetu Programiranje 2 (C) UNI, Fakulteta za računalništvo in infor
 - dodatne naloge s testnimi primeri.
 
 
-Seznam rešenih pretklih izpitov:
+Seznam rešenih preteklih izpitov:
 -----------
 - 2017 - vsi roki,
 - 2018 - vsi roki,
 - 2019 - 1. in 2. rok,
 - 2022 - vsi roki.
 
-Seznam rešenih pretklih kolokvijev:
+Seznam rešenih preteklih kolokvijev:
 -----------
 - Prvi kolokvij:
 	- 2015,
