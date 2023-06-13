@@ -13,6 +13,7 @@ Seznam rešenih pretklih izpitov:
 -----------
 - 2017 - vsi roki,
 - 2018 - vsi roki,
+- 2019 - 1. rok,
 - 2022 - vsi roki.
 
 Seznam rešenih pretklih kolokvijev:
