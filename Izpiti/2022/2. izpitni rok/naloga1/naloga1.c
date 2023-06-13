@@ -38,9 +38,8 @@ int main(int argc, char** argv) {
     unsigned char temp;
     while(fread(&temp, sizeof(unsigned char), 1, datoteka) != 0){
         for(int i = 0; i < 8; i++){
-            int a = (temp) & 1;
-            stevilo += a; 
-            temp = temp >> 1;         
+            stevilo += temp%2;
+            temp = temp / 2;        
         }
     }
     fclose(datoteka);
